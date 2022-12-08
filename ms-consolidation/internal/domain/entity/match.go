@@ -5,19 +5,20 @@ import (
 	"time"
 )
 
-type MatchResults struct {
+type MatchResult struct {
 	teamAScore int
 	teamBScore int
 }
 
-func NewMatchResults(teamAScore, teamBScore int) *MatchResults {
-	return &MatchResults{
+func NewMatchResult(teamAScore, teamBScore int) *MatchResult {
+	return &MatchResult{
 		teamAScore: teamAScore,
 		teamBScore: teamBScore,
 	}
 }
 
-func (m *MatchResults) GetResult() string {
+func (m *MatchResult) GetResult() string {
+	// 1-0
 	return strconv.Itoa(m.teamAScore) + "-" + strconv.Itoa(m.teamBScore)
 }
 
@@ -29,8 +30,8 @@ type Match struct {
 	TeamBID string
 	Date    time.Time
 	Status  string
-	Results MatchResults
-	Action  []GameAction
+	Result  MatchResult
+	Actions []GameAction
 }
 
 func NewMatch(id string, teamA *Team, teamB *Team, date time.Time) *Match {
